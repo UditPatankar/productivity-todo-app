@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Productivity ToDo App</title>
+
+   <!-- Google Fonts -->   
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+   <!-- Font Awesome Icons -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+
+   <!-- Local Stylesheet -->
+   <link rel="stylesheet" href="style.css">
+
+   <!-- Local Script -->
+   <script defer src="app.js"></script>
+</head>
+
+<body class="light-theme">
+   <main class="todo-container">
+      <!-- App Header -->
+      <header class="todo-header">
+         <h1>Productivity Tracker</h1>
+         <button id="theme-toggle" aria-label="Toggle dark/light theme">
+            <i class="fa-solid fa-moon"></i>
+         </button>
+      </header>
+
+      <!-- Controls Section (Green Box in wireframe) -->
+      <section class="todo-controls">
+         <!-- Input & Add Form -->
+         <form id="todo-form" class="input-group">
+               <input type="text" id="todo-input" placeholder="Type a new task here..." required>
+               <button type="submit" id="add-btn">
+                  <i class="fa-solid fa-plus"></i> Add
+               </button>
+         </form>
+
+         <!-- Filters & Actions Row -->
+         <div class="filter-actions-row">
+               <div class="filters">
+                  <button class="filter-btn active" data-filter="all">All</button>
+                  <button class="filter-btn" data-filter="active">Active</button>
+                  <button class="filter-btn" data-filter="completed">Completed</button>
+               </div>
+               <button id="clear-completed-btn">
+                  <i class="fa-solid fa-broom"></i> Clear Completed
+               </button>
+         </div>
+
+         <!-- Task Counter Display -->
+         <div class="task-counter">
+               task counter : <span id="items-left"></span> left
+         </div>
+      </section>
+
+      <!-- Task List Section (Blue Box in wireframe) -->
+      <section class="todo-list-wrapper">
+         <!-- The Empty State Container (Visible when list is empty) -->
+         <div id="no-tasks-state" class="empty-state">
+            <div class="empty-icon-wrapper">
+                  <i class="fa-regular fa-clipboard"></i>
+            </div>
+            <h3>No tasks yet</h3>
+            <p>Your tasks will be listed here. Enjoy your productive day!</p>
+         </div>
+
+         <ul id="todo-list">
+            <!-- list of task items wil appear here -->  
+         </ul>
+      </section>
+
+      <template id="task-item-template">
+         <li class="todo-item">
+            <span class="todo-text"></span>
+            <div class="todo-actions">
+               <button class="action-btn done-btn" title="Mark as done">
+                     <i class="fa-solid fa-check"></i> 
+               </button>
+               <button class="action-btn delete-btn" title="Delete task">
+                     <i class="fa-solid fa-trash-can"></i> 
+               </button>
+               <button class="action-btn edit-btn" title="Edit task">
+                     <i class="fa-solid fa-pen-to-square"></i> 
+               </button>
+            </div>
+         </li>
+      </template>
+   </main>
+</body>
+</html>

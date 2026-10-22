@@ -1,0 +1,444 @@
+/* ==========================================
+   1. GOOGLE MATERIAL 3 CORE CONFIGURATION
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Default Google Light Theme */
+body {
+  --bg-surface: #f8f9fa; /* Google main background */
+  --panel-bg: #ffffff; /* Card container white */
+  --border-subtle: #e0e0e0; /* Clean, razor-thin lines */
+  --text-primary: #1f1f1f; /* Google dark gray text */
+  --text-secondary: #5f6368; /* Muted label gray */
+  --hover-tint: rgba(0, 0, 0, 0.04); /* Neutral hover background */
+  --action-size: 36px; /* Size of the done / delete / edit buttons */
+
+  /* Google Brand Palette */
+  --google-blue: #1a73e8; /* Primary interactive blue */
+  --google-blue-hover: #1557b0;
+  --google-blue-light: #e8f0fe; /* Filter active background */
+  --on-primary: #ffffff; /* Text color on top of the blue button */
+  --google-red: #d93025; /* Clean danger red */
+  --google-red-light: #fce8e6;
+  --google-green: #1e8e3e; /* Accent green */
+  --google-green-light: #e6f4ea;
+
+  font-family:
+    'Inter',
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 60px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease;
+}
+
+/* Auto-Matching Dark Theme Override */
+body.dark-theme {
+  --bg-surface: #131314;
+  --panel-bg: #1e1f20;
+  --border-subtle: #444746;
+  --text-primary: #e3e3e3;
+  --text-secondary: #c4c7c5;
+  --hover-tint: rgba(255, 255, 255, 0.08);
+
+  --google-blue: #a8c7fa;
+  --google-blue-hover: #7cacf8;
+  --google-blue-light: #004a77;
+  --on-primary: #062e6f;
+  --google-red: #f2b8b5;
+  --google-red-light: #601410;
+  --google-green: #6dd58c;
+  --google-green-light: #07522c;
+}
+
+/* Keyboard focus ring (only shows when using the keyboard, not on mouse click) */
+button:focus-visible {
+  outline: 2px solid var(--google-blue);
+  outline-offset: 2px;
+}
+
+/* ==========================================
+   2. APP CONTAINER & INTEGRATED TOP BAR
+   ========================================== */
+.todo-container {
+  width: 100%;
+  max-width: 640px;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.todo-header h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+}
+
+#theme-toggle {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0; /* never squash the circle */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s;
+}
+
+#theme-toggle:hover {
+  background-color: var(--hover-tint);
+  border-color: var(--text-primary);
+}
+
+/* ==========================================
+   3. GOOGLE WORKFLOW INNER CONTROLS (Green Wireframe Context)
+   ========================================== */
+.todo-controls {
+  margin-bottom: 24px;
+}
+
+.input-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+#todo-input {
+  flex: 1;
+  min-width: 0; /* lets the input shrink on small screens instead of overflowing */
+  background-color: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 14px 16px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+#todo-input:focus {
+  border-color: var(--google-blue);
+  box-shadow: inset 0 0 0 1px var(--google-blue);
+}
+
+button {
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+
+#add-btn {
+  background-color: var(--google-blue);
+  color: var(--on-primary);
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+#add-btn:hover {
+  background-color: var(--google-blue-hover);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+/* Tab Filter Rows */
+.filter-actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* on narrow screens "Clear Completed" drops to the next line */
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-btn {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  padding: 8px 16px;
+  border-radius: 20px; /* Distinct pill shape */
+}
+
+.filter-btn:hover {
+  background-color: var(--hover-tint);
+  color: var(--text-primary);
+}
+
+.filter-btn.active {
+  background-color: var(--google-blue-light);
+  color: var(--google-blue);
+  border-color: transparent;
+}
+
+#clear-completed-btn {
+  background-color: transparent;
+  color: var(--text-secondary);
+  padding: 8px 12px;
+}
+
+#clear-completed-btn:hover {
+  color: var(--google-red);
+  background-color: var(--google-red-light);
+}
+
+.task-counter {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+/* ==========================================
+   4. MATERIAL TASK COMPONENT LIST (Blue Wireframe Context)
+   ========================================== */
+.todo-list-wrapper {
+  margin-top: 16px;
+}
+
+#todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Clean Google List Item Rows */
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* buttons stay at the top when the text is long */
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--border-subtle);
+  gap: 16px;
+}
+
+.todo-text {
+  flex: 1;
+  min-width: 0; /* needed so long text wraps instead of pushing the buttons out */
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  overflow-wrap: anywhere; /* breaks only very long words, normal words stay whole */
+  line-height: 1.5;
+  /* one line of text + this padding = exactly the button height, so a short task looks centered with the buttons */
+  padding-block: calc((var(--action-size) - 1.425rem) / 2);
+}
+
+.todo-item.is-editing .todo-text {
+  padding-block: 0;
+}
+
+.todo-item.completed-state .todo-text {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+/* Inline input shown while editing a task */
+.edit-input {
+  width: 100%;
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--google-blue);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font: inherit;
+  outline: none;
+}
+
+.todo-actions {
+  margin-right: 10px;
+  display: flex;
+  max-width: 200px;
+  flex-grow: 1;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+/* Minimal Action Tool Icons */
+.action-btn {
+  background-color: transparent;
+  color: var(--text-secondary);
+  width: var(--action-size);
+  height: var(--action-size);
+  flex-shrink: 0;
+  border-radius: 50%;
+  padding: 0;
+}
+
+/* Functional Colors Only Visible on Hover Focus states */
+.done-btn:hover {
+  color: var(--google-green);
+  background-color: var(--google-green-light);
+}
+
+.delete-btn:hover {
+  color: var(--google-red);
+  background-color: var(--google-red-light);
+}
+
+.edit-btn:hover {
+  color: var(--google-blue);
+  background-color: var(--google-blue-light);
+}
+
+/* ==========================================
+   5. GOOGLE-STYLE EMPTY STATE CARD
+   ========================================== */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  background-color: transparent;
+  transition: opacity 0.2s ease;
+}
+
+/* Big Material Icon Presentation */
+.empty-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  background-color: var(--google-blue-light);
+  color: var(--google-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+}
+
+.empty-state h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.empty-state p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  max-width: 280px;
+  line-height: 1.4;
+}
+
+/* Layout Engine Toggle Utility Class */
+.hidden-layout {
+  display: none !important;
+}
+
+/* ==========================================
+   6. RESPONSIVE (tablet & mobile)
+   ========================================== */
+
+/* Phones & small tablets */
+@media (max-width: 600px) {
+  body {
+    padding: 24px 12px;
+    --action-size: 40px; /* bigger tap targets for fingers */
+  }
+
+  .todo-container {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .todo-header {
+    margin-bottom: 20px;
+  }
+
+  .todo-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .input-group {
+    gap: 8px;
+  }
+
+  #todo-input {
+    padding: 12px 14px;
+  }
+
+  #add-btn {
+    padding: 0 16px;
+  }
+
+  /* Task row: smaller gaps, buttons pushed to the right edge */
+  .todo-item {
+    gap: 8px;
+    padding: 12px 0;
+  }
+
+  .todo-actions {
+    margin-right: 0;
+    max-width: none;
+    flex-grow: 0;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+
+  .empty-state {
+    padding: 28px 12px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  body {
+    padding: 16px 8px;
+  }
+
+  .todo-container {
+    padding: 16px;
+  }
+
+  .filter-btn {
+    padding: 6px 12px;
+  }
+}
