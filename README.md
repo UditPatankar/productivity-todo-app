@@ -2,7 +2,7 @@
 
 A clean, responsive to-do app built with plain **HTML, CSS and JavaScript**. No frameworks, no build step. Tasks and theme choice are saved in the browser, so everything is still there after a refresh.
 
-<!-- Add a screenshot or GIF here, e.g. ![App preview](screenshot.png) -->
+![Productivity Tracker preview](screenshots/preview.png)
 
 ## Features
 
